@@ -19,10 +19,11 @@ describe("create actions", () => {
     it("should save a new note", () => {
       const expectedAction = {
         type: createActions.CREATE_NEW,
-        title: newTitle,
-        body: newBody,
+        newTitle,
+        newBody,
         completed: true,
-        creating: false
+        creating: false,
+        id: 1
       };
       expect(createActions.create_New(newTitle, newBody)).toEqual(
         expectedAction

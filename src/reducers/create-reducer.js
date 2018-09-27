@@ -2,7 +2,8 @@ export const initialCreateState = {
   creating: false,
   title: "",
   body: "",
-  completed: false
+  completed: false,
+  todo_id: 0
 };
 
 export const createReducer = (state = initialCreateState, action) => {
@@ -11,8 +12,8 @@ export const createReducer = (state = initialCreateState, action) => {
       return [
         ...state,
         {
-          creating: true,
-          completed: false
+          creating: action.creating,
+          completed: action.completed
         }
       ];
     }
@@ -23,8 +24,9 @@ export const createReducer = (state = initialCreateState, action) => {
         {
           title: action.newTitle,
           body: action.newBody,
-          completed: true,
-          creating: false
+          completed: action.completed,
+          creating: action.creating,
+          todo_id: action.Id
         }
       ];
     }

@@ -1,5 +1,6 @@
 export const OPEN_NEW_NOTE = "OPEN_NEW_NOTE";
 export const CREATE_NEW = "CREATE_NEW";
+let nextToDoID = 0;
 
 export const open_New_Note = () => {
   return {
@@ -12,9 +13,10 @@ export const open_New_Note = () => {
 export const create_New = (newTitle, newBody) => {
   return {
     type: CREATE_NEW,
-    title: newTitle,
-    body: newBody,
+    newTitle,
+    newBody,
     completed: true,
-    creating: false
+    creating: false,
+    id: nextToDoID + 1
   };
 };
