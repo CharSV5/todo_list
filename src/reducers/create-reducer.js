@@ -9,19 +9,16 @@ export const initialCreateState = {
 export const createReducer = (state = initialCreateState, action) => {
   switch (action.type) {
     case OPEN_NEW_NOTE: {
-      return [
+      return {
         ...state,
-        {
-          creating: action.creating,
-          completed: action.completed
-        }
-      ];
+        creating: action.creating,
+        completed: action.completed
+      };
     }
 
     case CREATE_NEW: {
-      return [
+      return {
         ...state,
-        {
           title: action.newTitle,
           body: action.newBody,
           completed: action.completed,
