@@ -31,4 +31,13 @@ describe("storage actions", () => {
       );
     });
   });
+  describe("delete_Todo", () => {
+    it("should ofer the right id for deletion", () => {
+      const expectedActions = {
+        type: storageActions.DELETE_TODO,
+        id: id
+      };
+      expect(storageActions.delete_Todo(id)).toEqual(expectedActions);
+    });
+  });
 });

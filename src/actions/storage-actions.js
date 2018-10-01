@@ -1,5 +1,6 @@
 export const SAVE_TODO = "SAVE_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";
+export const DELETE_TODO = "DELETE_TODO";
 
 export const save_Todo = newTodo => {
   return {
@@ -14,5 +15,12 @@ export const update_Todo = (id, updatedTitle, updatedBody) => {
     id,
     updatedTitle,
     updatedBody
+  };
+};
+
+export const delete_Todo = id => {
+  return {
+    type: DELETE_TODO,
+    id
   };
 };

@@ -1,5 +1,5 @@
 export const initialStorageReducer = {
-  tempStorage: []
+  tempStorage: ""
 };
 
 export const storageReducer = (state = initialStorageReducer, action) => {
@@ -13,6 +13,18 @@ export const storageReducer = (state = initialStorageReducer, action) => {
             ...item,
             title: action.UpdatedTitle,
             body: action.updatedBody
+          };
+        }
+        return item;
+      });
+    case DELETE_TODO:
+      return state.map(item => {
+        if (item.id === action.id) {
+          return {
+            ...item,
+            title: "",
+            body: "",
+            id: ""
           };
         }
         return item;
