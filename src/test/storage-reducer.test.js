@@ -25,6 +25,9 @@ const action4 = {
 };
 
 describe("storageReducer", () => {
+  beforeAll(() => {
+    return storageReducer(undefined, action1);
+  });
   it("should save a todo in an array", () => {
     const expectedState = [
       {

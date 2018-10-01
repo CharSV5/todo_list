@@ -19,7 +19,6 @@ export const storageReducer = (state = initialStorageState, action) => {
           return item;
         }
       });
-
     case UPDATE_TODO:
       return state.tempStorage.map(item => {
         if (item.id === action.id) {

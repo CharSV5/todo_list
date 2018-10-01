@@ -17,6 +17,6 @@ export const create_New = (newTitle, newBody) => {
     newBody,
     completed: true,
     creating: false,
-    id: nextToDoID + 1
+    id: (nextToDoID += 1)
   };
 };

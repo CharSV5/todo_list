@@ -1,3 +1,5 @@
+import { OPEN_NEW_NOTE, CREATE_NEW } from "../actions/create-actions";
+
 export const initialCreateState = {
   creating: false,
   title: "",
@@ -19,13 +21,12 @@ export const createReducer = (state = initialCreateState, action) => {
     case CREATE_NEW: {
       return {
         ...state,
-          title: action.newTitle,
-          body: action.newBody,
-          completed: action.completed,
-          creating: action.creating,
-          todo_id: action.Id
-        }
-      ];
+        title: action.newTitle,
+        body: action.newBody,
+        completed: action.completed,
+        creating: action.creating,
+        todo_id: action.Id
+      };
     }
     default:
       return state;
