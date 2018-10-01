@@ -5,6 +5,9 @@ const newTodo = {
   id: 1
 };
 
+const updatedTitle = "Hi";
+const updatedBody = "testing456";
+
 describe("storage actions", () => {
   describe("save_Todo", () => {
     it("should save a new todo to the tempStorage Array", () => {
@@ -13,6 +16,15 @@ describe("storage actions", () => {
         newTodo: newTodo
       };
       expect(storageActions.save_Todo(newTodo)).toEqual(expectedActions);
+    });
+  });
+  describe("update_Todo", () => {
+    it("should update the right todo", () => {
+      const expectedActions = {
+        type: storageActions.UPDATE_TODO,
+        updatedTitle: updatedTitle,
+        updatedBody: updatedBody
+      };
     });
   });
 });
