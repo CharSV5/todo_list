@@ -1,4 +1,9 @@
-import { SAVE_TODO, SHOW_TODO } from "../actions/storage-actions.js";
+import {
+  SAVE_TODO,
+  SHOW_TODO,
+  UPDATE_TODO,
+  DELETE_TODO
+} from "../actions/storage-actions.js";
 
 export const initialStorageState = {
   tempStorage: []
@@ -7,8 +12,7 @@ export const initialStorageState = {
 export const storageReducer = (state = initialStorageState, action) => {
   switch (action.type) {
     case SAVE_TODO:
-      return [...state.tempStorage, action.newTodo];
-
+      return state.tempStorage.concat([action.newTodo]);
     case SHOW_TODO:
       return state.tempStorage.map(item => {
         if (item.title === action.title) {
@@ -24,20 +28,11 @@ export const storageReducer = (state = initialStorageState, action) => {
             title: action.UpdatedTitle,
             body: action.updatedBody
           };
+        } else {
+          return item;
         }
-        return item;
       });
     case DELETE_TODO:
-      return state.tempStorage.map(item => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            title: "",
-            body: "",
-            id: ""
-          };
-        }
-        return item;
-      });
+      return state.tempStorage.filter(item => item.id !== action.id);
   }
 };
