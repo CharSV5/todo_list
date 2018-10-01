@@ -7,6 +7,7 @@ const newTodo = {
 const id = 2;
 const updatedTitle = "Hi";
 const updatedBody = "testing456";
+const title = "12345";
 
 describe("storage actions", () => {
   describe("save_Todo", () => {
@@ -18,8 +19,17 @@ describe("storage actions", () => {
       expect(storageActions.save_Todo(newTodo)).toEqual(expectedActions);
     });
   });
+  describe("show_Todo", () => {
+    it("should provide a title which to search by", () => {
+      const expectedActions = {
+        type: storageActions.SHOW_TODO,
+        title: title
+      };
+      expect(storageActions.show_Todo(title)).toEqual(expectedActions);
+    });
+  });
   describe("update_Todo", () => {
-    it("should update the right todo", () => {
+    it("should provide info for updating the todo", () => {
       const expectedActions = {
         type: storageActions.UPDATE_TODO,
         id: id,
