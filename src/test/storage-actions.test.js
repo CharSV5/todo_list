@@ -4,7 +4,7 @@ const newTodo = {
   body: "testing123",
   id: 1
 };
-
+const id = 2;
 const updatedTitle = "Hi";
 const updatedBody = "testing456";
 
@@ -22,9 +22,13 @@ describe("storage actions", () => {
     it("should update the right todo", () => {
       const expectedActions = {
         type: storageActions.UPDATE_TODO,
+        id: id,
         updatedTitle: updatedTitle,
         updatedBody: updatedBody
       };
+      expect(storageActions.update_Todo(id, updatedTitle, updatedBody)).toEqual(
+        expectedActions
+      );
     });
   });
 });

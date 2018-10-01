@@ -8,9 +8,10 @@ export const save_Todo = newTodo => {
   };
 };
 
-export const update_Todo = (updatedTitle, updatedBody) => {
+export const update_Todo = (id, updatedTitle, updatedBody) => {
   return {
-    type: Update_Todo,
+    type: UPDATE_TODO,
+    id,
     updatedTitle,
     updatedBody
   };
