@@ -24,8 +24,8 @@ class CreateTodo extends Component {
           <textarea required ref={input => (this.getBody = input)} />
           <button type="submit">Create Todo</button>
         </form>
-        {this.props.title}
-        {this.props.body}
+        {this.props.newItem.title}
+        {this.props.newItem.body}
       </div>
     );
   }
@@ -33,9 +33,7 @@ class CreateTodo extends Component {
 
 const mapStateToProps = state => {
   return {
-    title: state.createReducer.title,
-    body: state.createReducer.body,
-    id: state.createReducer.id
+    newItem: state.createReducer.newItem
   };
 };
 
