@@ -1,12 +1,17 @@
 import { combineReducers, createStore } from "redux";
-import { createReducer } from "./reducers/create-reducer";
+import { createReducer, initialCreateState } from "./reducers/create-reducer";
+import {
+  storageReducer,
+  initialStorageState
+} from "./reducers/storage-reducer";
 
 const rootReducer = combineReducers({
   createReducer
 });
 
 const initialState = {
-  initialCreateState
+  initialCreateState,
+  initialStorageState
 };
 
 export default createStore(
