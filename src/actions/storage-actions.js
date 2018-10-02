@@ -1,5 +1,5 @@
-export const SAVE_TODO = "SAVE_TODO";
-export const SHOW_TODO = "SHOW_TODO";
+export const SAVE_TODO = 'SAVE_TODO'
+export const SHOW_TODO = "SHOW_TODO"
 export const UPDATE_TODO = "UPDATE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 

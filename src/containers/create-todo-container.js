@@ -23,6 +23,12 @@ class CreateTodo extends Component {
   }
 
   render() {
+
+    const titleDisplay = []
+
+    this.props.tempStorage.map(item =>
+      titleDisplay.push(<li key={item.id.toString()}>{item.newTitle}</li>
+      ))
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -42,9 +48,7 @@ class CreateTodo extends Component {
           <br />
           <button type="submit">Create Todo</button>
         </form>
-        {this.props.newItem.title}
-        {this.props.newItem.body}
-        {this.props.newItem.id}
+        <ul>{titleDisplay}</ul>
       </div>
     );
   }

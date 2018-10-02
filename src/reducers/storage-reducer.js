@@ -3,11 +3,9 @@ import {
   SHOW_TODO,
   UPDATE_TODO,
   DELETE_TODO
-} from "../actions/storage-actions.js";
+} from "../actions/storage-actions.js"
 
-export const initialStorageState = {
-  tempStorage: []
-};
+export const initialStorageState = { tempStorage: [] }
 
 export const storageReducer = (state = initialStorageState, action) => {
   switch (action.type) {
@@ -18,7 +16,7 @@ export const storageReducer = (state = initialStorageState, action) => {
     case SHOW_TODO:
       return state.tempStorage.map(item => {
         if (item.title === action.title) {
-          return item;
+          return item
         }
       });
     case UPDATE_TODO:
@@ -30,12 +28,12 @@ export const storageReducer = (state = initialStorageState, action) => {
             body: action.updatedBody
           };
         } else {
-          return item;
+          return item
         }
       });
     case DELETE_TODO:
       return state.tempStorage.filter(item => item.id !== action.id);
     default:
-      return state;
+      return state
   }
-};
+}
