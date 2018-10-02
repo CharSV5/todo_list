@@ -26,8 +26,20 @@ class CreateTodo extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input required type="text" ref={input => (this.getTitle = input)} />
-          <textarea required ref={input => (this.getBody = input)} />
+          <label>
+            Title:
+            <input
+              required
+              type="text"
+              ref={input => (this.getTitle = input)}
+            />
+          </label>
+          <br />
+          <label>
+            Body:
+            <textarea required ref={input => (this.getBody = input)} />
+          </label>
+          <br />
           <button type="submit">Create Todo</button>
         </form>
         {this.props.newItem.title}
