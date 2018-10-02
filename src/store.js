@@ -6,7 +6,8 @@ import {
 } from "./reducers/storage-reducer";
 
 const rootReducer = combineReducers({
-  createReducer
+  createReducer,
+  storageReducer
 });
 
 const initialState = {

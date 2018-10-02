@@ -1,4 +1,4 @@
-import { CREATE_NEW } from "../actions/create-actions";
+import { CREATE_NEW, COMPLETED } from "../actions/create-actions";
 
 export const initialCreateState = {
   newItem: {}
@@ -14,6 +14,12 @@ export const createReducer = (state = initialCreateState, action) => {
           body: action.newBody,
           id: action.Id
         }
+      };
+    }
+    case COMPLETED: {
+      return {
+        ...state,
+        newItem: {}
       };
     }
     default:

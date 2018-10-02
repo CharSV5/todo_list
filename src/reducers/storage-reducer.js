@@ -12,7 +12,9 @@ export const initialStorageState = {
 export const storageReducer = (state = initialStorageState, action) => {
   switch (action.type) {
     case SAVE_TODO:
-      return state.tempStorage.concat([action.newTodo]);
+      return {
+        tempStorage: state.tempStorage.concat([action.newTodo])
+      };
     case SHOW_TODO:
       return state.tempStorage.map(item => {
         if (item.title === action.title) {
@@ -33,5 +35,7 @@ export const storageReducer = (state = initialStorageState, action) => {
       });
     case DELETE_TODO:
       return state.tempStorage.filter(item => item.id !== action.id);
+    default:
+      return state;
   }
 };
