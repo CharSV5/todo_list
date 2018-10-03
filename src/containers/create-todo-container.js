@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { create_New, completed } from "../actions/create-actions";
 import { save_Todo } from "../actions/storage-actions";
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import { Link, Route, Switch } from 'react-router-dom';
+import ShowTodos from './show-todos-container'
 
 class CreateTodo extends Component {
   constructor(props) {
@@ -25,40 +25,35 @@ class CreateTodo extends Component {
   }
 
   render() {
-
-    const titleDisplay = []
-
-    this.props.tempStorage.map(item =>
-      titleDisplay.push(<li key={item.id.toString()}>{item.newTitle}</li>
-      ))
     return (
-      <Router>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Title:
+
+      < div >
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Title:
             <input
-                required
-                type="text"
-                ref={input => (this.getTitle = input)}
-              />
-            </label>
-            <br />
-            <label>
-              Body:
+              required
+              type="text"
+              ref={input => (this.getTitle = input)}
+            />
+          </label>
+          <br />
+          <label>
+            Body:
             <textarea required ref={input => (this.getBody = input)} />
-            </label>
-            <br />
-            <button type="submit">Create Todo</button>
-          </form>
-          <ul>{titleDisplay}</ul>
-        </div>
-      </Router>
+          </label>
+          <br />
+          <button type="submit">Create Todo</button>
+        </form>
+        <Link to="/showTodos">Show Todos</Link>
+        <Route path="/showTodos" render={(props) => <ShowTodos {...props} tempStorage={this.props.tempStorage} />} />
+      </div >
+
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   console.log("state", state);
   return {
     newItem: state.createReducer.newItem,
