@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { update_Todo } from "../actions/storage-actions";
 
-class UpdateTodo extends Component {
+class ReadTodo extends Component {
     constructor(props) {
         super(props);
+        console.log('Read:', this.props)
     }
+
+
+
     render() {
-        return (
-            <div>{this.props.tempStorage.newBody}</div>
-        )
+        const match = this.props.match
+
+
+        return <div>READ</div>
+
     }
 }
 
@@ -21,10 +26,8 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return bindActionCreators({
-        onUpdateTodo: update_Todo
-    }, dispatch)
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateTodo)
+
+
+
+export default connect(mapStateToProps)(ReadTodo)

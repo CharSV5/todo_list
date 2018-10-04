@@ -10,10 +10,10 @@ export const save_Todo = newTodo => {
   };
 };
 
-export const show_Todo = title => {
+export const show_Todo = id => {
   return {
     type: SHOW_TODO,
-    title
+    id
   };
 };
 

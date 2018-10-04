@@ -15,7 +15,7 @@ export const storageReducer = (state = initialStorageState, action) => {
       };
     case SHOW_TODO:
       return state.tempStorage.map(item => {
-        if (item.title === action.title) {
+        if (item.id === action.id) {
           return item
         }
       });

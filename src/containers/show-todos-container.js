@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-// import UpdateTodo from './update-todo-container';
+import ReadTodo from './read-todo-container';
+import { show_Todo } from "../actions/storage-actions";
 
-const UpdateTodo = () => (
-    <div>
-        <h2>This is Update Todo</h2>
-    </div>
-)
+
 
 class ShowTodos extends Component {
     constructor(props) {
@@ -30,12 +27,12 @@ class ShowTodos extends Component {
         return (
             <div>
                 <div>
-                    <h4>Click on a todo to update or delete</h4>
+                    <h4>Click on a todo to read</h4>
                     {titlesList}
                 </div>
                 <Link to="/createTodo">Create Todo</Link>
                 <Route path={`${match.url}/:id`}
-                    render={(props) => <UpdateTodo {...props} />}
+                    render={(props) => <ReadTodo {...props} />}
                 />
                 <Route exact path={match.url} />
             </div>
@@ -49,4 +46,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(ShowTodos)
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        onShowTodo: show_Todo
+    }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowTodos)
