@@ -1,29 +1,52 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+// import UpdateTodo from './update-todo-container';
 
-const ShowTodos = ({ match, tempStorage }) => {
+const UpdateTodo = () => (
+    <div>
+        <h2>This is Update Todo</h2>
+    </div>
+)
 
+class ShowTodos extends Component {
+    constructor(props) {
+        super(props);
+        console.log('show', this.props)
+    }
 
-    let titlesList = tempStorage.map((todo) => {
+    render() {
+        const match = this.props.match
+        let titlesList = this.props.tempStorage.map((todo) => {
+            return (
+                <li key={todo.id}>
+                    <Link to={`${match.url}/${todo.id}`}>
+                        {todo.newTitle}
+                    </Link>
+                </li>
+            )
+        })
         return (
-            <li key={todo.id}>
-                <Link to={`${match.url}/${todo.id}`}>
-                    {todo.newTitle}
-                </Link>
-            </li>
-        )
-    })
-    return (
-        <div>
             <div>
-                <h3>Todos</h3>
-                <ul>{titlesList}</ul>
+                <div>
+                    <h4>Click on a todo to update or delete</h4>
+                    {titlesList}
+                </div>
+                <Link to="/createTodo">Create Todo</Link>
+                <Route path={`${match.url}/:id`}
+                    render={(props) => <UpdateTodo {...props} />}
+                />
+                <Route exact path={match.url} />
             </div>
-            <Route path={`${match.url}/:id`}
-                render={(props) => <ShowTodos {...props} />}
-            />
-        </div>
-    )
+        )
+    }
 }
 
-export default ShowTodos
+const mapStateToProps = (state) => {
+    return {
+        tempStorage: state.storageReducer.tempStorage
+    }
+}
+
+export default connect(mapStateToProps)(ShowTodos)

@@ -10,7 +10,7 @@ class UpdateTodo extends Component {
     }
     render() {
         return (
-            <div></div>
+            <div>{this.props.tempStorage.newBody}</div>
         )
     }
 }

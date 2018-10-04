@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { create_New, completed } from "../actions/create-actions";
 import { save_Todo } from "../actions/storage-actions";
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import ShowTodos from './show-todos-container'
 
 class CreateTodo extends Component {
@@ -25,6 +25,9 @@ class CreateTodo extends Component {
   }
 
   render() {
+    const tempStorage = this.props.tempStorage
+
+
     return (
 
       < div >
@@ -46,7 +49,8 @@ class CreateTodo extends Component {
           <button type="submit">Create Todo</button>
         </form>
         <Link to="/showTodos">Show Todos</Link>
-        <Route path="/showTodos" render={(props) => <ShowTodos {...props} tempStorage={this.props.tempStorage} />} />
+        <Route path="/showTodos" render={(props) => <ShowTodos {...props} tempStorage={tempStorage} />} />
+
       </div >
 
     );
