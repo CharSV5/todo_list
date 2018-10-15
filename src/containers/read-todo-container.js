@@ -12,11 +12,16 @@ class ReadTodo extends Component {
 
 
     render() {
-        const match = this.props.match
+        let storage = this.props.tempStorage
+        let id = this.props.match.params.id
+        let body = storage.find(todo => todo.id === parseInt(id))
 
+        return (
+            <div>
+                {body.newBody}
 
-        return <div>READ</div>
-
+            </div>
+        )
     }
 }
 
