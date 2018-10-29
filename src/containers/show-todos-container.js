@@ -30,7 +30,9 @@ class ShowTodos extends Component {
                     <h4>Click on a todo to read</h4>
                     {titlesList}
                 </div>
-                <Link to="/createTodo">Create Todo</Link>
+                <button>
+                    <Link to="/createTodo">Create Todo</Link>
+                </button>
                 <Route path={`${match.url}/:id`}
                     render={(props) => <ReadTodo {...props} />}
                 />

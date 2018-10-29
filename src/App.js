@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from "./Home";
 import ShowTodos from './containers/show-todos-container';
 import ReadTodo from './containers/read-todo-container';
+import DeleteTodo from './containers/delete-todo-container';
 
 class App extends Component {
   render() {
@@ -14,8 +15,8 @@ class App extends Component {
           <Route path="/createTodo" component={CreateTodo} />
           <Route path="/showTodos" component={ShowTodos} />
           <Route path="/readTodo" component={ReadTodo} />
+          <Route path="/deleteTodo" component={DeleteTodo} />
           <Route exact path="/" component={Home} />
-
         </Switch>
       </div>
     );
